@@ -1,0 +1,7 @@
+---
+  - name: Create homepage ZFS volume
+    community.general.zfs:
+      name: "{{ HOMEPAGE_STORAGE_ZFS_POOL }}/{{ HOMEPAGE_STORAGE_ZFS_FS }}"
+      state: present
+      extra_zfs_properties:
+        mountpoint: "{{ HOMEPAGE_PATH }}"

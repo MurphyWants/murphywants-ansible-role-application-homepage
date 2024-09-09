@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    ports:
+      - "127.0.0.1:{{ HOMEPAGE_HTTP_PORT }}:3000"
+    volumes:
+      - {{ HOMEPAGE_PATH }}/volumes/homepage-app-config:/app/config
+      - {{ HOMEPAGE_PATH }}/volumes/homepage-app-public-icons:/app/public/icons
+    environment:
+      - PUID:{{ HOMEPAGE_PUID }}
+      - PGID:{{ HOMEPAGE_PGID }}
+      

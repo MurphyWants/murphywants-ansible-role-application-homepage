@@ -1,0 +1,40 @@
+server {
+    listen       80;
+    listen       [::]:80;
+    server_name homepage {{ HOMEPAGE_FQDN }};
+  
+    access_log /var/log/nginx/homepage.80.{{ HOMEPAGE_FQDN }}.access.log;
+    error_log /var/log/nginx/homepage.80.{{ HOMEPAGE_FQDN }}.error.log;
+  
+    #location / {
+    #  proxy_pass "http://localhost:{{ HOMEPAGE_HTTP_PORT }}";
+    #  proxy_set_header Host $http_host;
+    #  proxy_set_header X-Real-IP $remote_addr;
+    #  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    #  proxy_set_header X-Forwarded-Proto $scheme;
+    #}
+  
+    return 301 https://{{ HOMEPAGE_FQDN }}$request_uri;
+  
+  }
+  
+  server {
+    listen       443;
+    listen       [::]:443;
+    server_name {{ HOMEPAGE_FQDN }};
+    ssl on;
+    ssl_certificate {{ HOMEPAGE_SSL_CERT_PATH }};
+    ssl_certificate_key {{ HOMEPAGE_SSL_KEY_PATH }};
+  
+    access_log /var/log/nginx/homepage.443.{{ HOMEPAGE_FQDN }}.access.log;
+    error_log /var/log/nginx/homepage.443.{{ HOMEPAGE_FQDN }}.error.log;
+  
+    location / {
+      proxy_pass "http://localhost:{{ HOMEPAGE_HTTP_PORT }}";
+      proxy_set_header Host $http_host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+  
+  }

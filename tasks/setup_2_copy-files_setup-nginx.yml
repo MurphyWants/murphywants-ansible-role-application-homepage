@@ -1,0 +1,36 @@
+---
+  - name: Create folders
+    ansible.builtin.file:
+      path: "{{ item }}"
+      state: directory
+    loop:
+      - "{{ HOMEPAGE_PATH }}"
+      - "{{ HOMEPAGE_PATH }}/volumes"
+      - "{{ HOMEPAGE_PATH }}/volumes/homepage-app-config"
+      - "{{ HOMEPAGE_PATH }}/volumes/homepage-app-public-icons"
+      - "{{ HOMEPAGE_PATH }}/backups"
+      - "{{ HOMEPAGE_PATH }}/backups/database"
+      - "{{ HOMEPAGE_PATH }}/backups/tarballs"
+      - "{{ HOMEPAGE_PATH }}/backups/logs"
+      - "{{ HOMEPAGE_PATH }}/scripts"
+      - "{{ HOMEPAGE_PATH }}/docs"
+
+
+  - name: Copy docker compose file
+    ansible.builtin.template:
+      src: "{{ role_path }}/templates/HOMEPAGE_docker-compose.yml.j2"
+      dest: "{{ HOMEPAGE_PATH }}/docs/docker-compose.yml"
+
+  - name: Install nginx
+    ansible.builtin.package:
+      name: nginx
+      state: 'latest'
+
+  - name: Install sqlite3
+    ansible.builtin.package:
+      name: sqlite3
+  
+  - name: Copy favicons
+    ansible.builtin.copy: 
+      src: "{{ role_path }}/files/favicons/reddit.png"
+      dest: "{{ HOMEPAGE_PATH }}/volumes/homepage-app-public-icons/reddit.png"

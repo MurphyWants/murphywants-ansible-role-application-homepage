@@ -1,0 +1,36 @@
+---
+  - name: Start homepage
+    community.docker.docker_compose:
+      project_src: "{{ HOMEPAGE_PATH }}/docs"
+      files: "docker-compose.yml"
+      pull: true
+
+  - name: Copy homepage bookmarks config
+    ansible.builtin.template:
+      src: "{{ role_path }}/templates/homepage_bookmarks.yml.j2"
+      dest: "{{ HOMEPAGE_PATH }}/volumes/homepage-app-config/bookmarks.yaml"
+
+  - name: Copy homepage kubernetes config
+    ansible.builtin.template:
+      src: "{{ role_path }}/templates/homepage_kubernetes.yml.j2"
+      dest: "{{ HOMEPAGE_PATH }}/volumes/homepage-app-config/kubernetes.yaml"
+
+  - name: Copy homepage docker config
+    ansible.builtin.template:
+      src: "{{ role_path }}/templates/homepage_docker.yml.j2"
+      dest: "{{ HOMEPAGE_PATH }}/volumes/homepage-app-config/docker.yaml"
+  
+  - name: Copy homepage services config
+    ansible.builtin.template:
+      src: "{{ role_path }}/templates/homepage_services.yml.j2"
+      dest: "{{ HOMEPAGE_PATH }}/volumes/homepage-app-config/services.yaml"
+
+  - name: Copy homepage settings config
+    ansible.builtin.template:
+      src: "{{ role_path }}/templates/homepage_settings.yml.j2"
+      dest: "{{ HOMEPAGE_PATH }}/volumes/homepage-app-config/settings.yaml"
+
+  - name: Copy homepage widget config
+    ansible.builtin.template:
+      src: "{{ role_path }}/templates/homepage_widgets.yml.j2"
+      dest: "{{ HOMEPAGE_PATH }}/volumes/homepage-app-config/widgets.yaml"
