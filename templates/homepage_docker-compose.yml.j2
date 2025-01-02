@@ -11,4 +11,4 @@ services:
     environment:
       - PUID:{{ HOMEPAGE_PUID }}
       - PGID:{{ HOMEPAGE_PGID }}
-      
+    restart: unless-stopped
