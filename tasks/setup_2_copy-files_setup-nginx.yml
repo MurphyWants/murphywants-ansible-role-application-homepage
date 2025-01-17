@@ -18,7 +18,7 @@
 
   - name: Copy docker compose file
     ansible.builtin.template:
-      src: "{{ role_path }}/templates/HOMEPAGE_docker-compose.yml.j2"
+      src: "{{ role_path }}/templates/homepage_docker-compose.yml.j2"
       dest: "{{ HOMEPAGE_PATH }}/docs/docker-compose.yml"
 
   - name: Install nginx
