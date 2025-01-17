@@ -23,7 +23,7 @@
   
   - name: Copy nginx config
     ansible.builtin.template:
-      src: "{{ role_path }}/templates/HOMEPAGE_nginx.conf.j2"
+      src: "{{ role_path }}/templates/homepage_nginx.conf.j2"
       dest: /etc/nginx/conf.d/HOMEPAGE_nginx.conf
 
   - name: Restart nginx
