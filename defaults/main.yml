@@ -6,16 +6,13 @@ HOMEPAGE_PATH: '/mnt/homepage/'
 HOMEPAGE_STORAGE_ZFS_POOL: 'apps_pool'
 HOMEPAGE_STORAGE_ZFS_FS: 'homepage'
 HOMEPAGE_TIMEZONE: "America/New_York"
-HOMEPAGE_PODMAN_SERVICE_ACCOUNT: 'srv_homepage'
+HOMEPAGE_PODMAN_SERVICE_ACCOUNT: 'srv_homepage' # TODO
 HOMEPAGE_CONTAINER_VERSION: 'latest'
 HOMEPAGE_FQDN: 'homepage.local'
 # undefined variables
 # HOMEPAGE_SSL_CERT_PATH: path to cert
 # HOMEPAGE_SSL_KEY_PATH: path to key
 HOMEPAGE_CUSTOM_YAML_SETTINGS:
-  providers:
-    openweathermap: openweathermapapikey
-    weatherapi: weatherapiapikey
 HOMEPAGE_CUSTOM_YAML_BOOKMARKS:
 HOMEPAGE_CUSTOM_YAML_SERVICES:
 HOMEPAGE_CUSTOM_YAML_KUBERNETES:
