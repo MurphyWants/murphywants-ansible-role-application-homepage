@@ -1,9 +1,7 @@
 ---
-  - name: Start homepage
-    community.docker.docker_compose_v2:
-      project_src: "{{ HOMEPAGE_PATH }}/docs"
-      files: "docker-compose.yml"
-      pull: always
+  - name: Start apps
+    ansible.builtin.import_tasks:
+      file: tag_start.yml
 
   - name: Copy homepage bookmarks config
     ansible.builtin.template:

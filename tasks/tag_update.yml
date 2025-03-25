@@ -1,2 +1,10 @@
 ---
-# TODO
+# Stop all running containers
+- name: Stop apps
+  ansible.builtin.import_tasks:
+    file: tag_stop.yml
+
+# Start all running containers, will pull down new containers on start
+- name: Start apps
+  ansible.builtin.import_tasks:
+    file: tag_start.yml
