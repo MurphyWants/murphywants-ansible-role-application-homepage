@@ -12,5 +12,5 @@ services:
       - PUID:{{ HOMEPAGE_PUID }}
       - PGID:{{ HOMEPAGE_PGID }}
       - COMPOSE_PROJECT_NAME:homepage
-      - HOMEPAGE_ALLOWED_HOSTS:{{ HOMEPAGE_FQDN }}
+      - HOMEPAGE_ALLOWED_HOSTS:*
     restart: unless-stopped
