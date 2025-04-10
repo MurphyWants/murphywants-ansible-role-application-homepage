@@ -9,8 +9,8 @@ services:
       - {{ HOMEPAGE_PATH }}/volumes/homepage-app-config:/app/config
       - {{ HOMEPAGE_PATH }}/volumes/homepage-app-public-icons:/app/public/icons
     environment:
-      PUID: {{ HOMEPAGE_PUID }}
-      PGID: {{ HOMEPAGE_PGID }}
-      COMPOSE_PROJECT_NAME: homepage
-      HOMEPAGE_ALLOWED_HOSTS: "{{ HOMEPAGE_FQDN }}"
+      PUID={{ HOMEPAGE_PUID }}
+      PGID={{ HOMEPAGE_PGID }}
+      COMPOSE_PROJECT_NAME=homepage
+      HOMEPAGE_ALLOWED_HOSTS={{ HOMEPAGE_FQDN }}
     restart: unless-stopped
